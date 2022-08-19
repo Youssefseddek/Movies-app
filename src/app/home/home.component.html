@@ -1,0 +1,73 @@
+
+<app-header [headerMovies]="movies"></app-header>
+
+
+<div class="row pb-5">
+
+    <div class="col-md-12">
+        <input type="text" [(ngModel)]="term" class="form-control mb-5" id="" placeholder="search by movie name">
+    </div>
+
+    <div class="col-md-4">
+        <div class="my-5">
+            <div class="brdr w-25 my-2"></div>
+
+            <h2 class="my-2"> Tranding Movies <br> To wathing Right Now</h2>
+            <p>Tranding Movies To wathing Right Now</p>
+
+            <div class="brdr w-100 my-2" ></div>
+        </div>
+    </div>
+    <div *ngFor="let movie of movies |search:term" class="col-md-2">
+        <div class="item position-relative ">
+            <a [routerLink]="['/movieDetails',movie.id]" class="text-decoration-none">
+            <img [src]="imgSrc+movie.poster_path" class="w-100" alt="">
+            <h2 class="h4">{{movie.title |watch}}</h2>
+            <p>{{movie.overview |seemore :10}}</p>
+            <div class="vote position-absolute top-0 end-0 bg-info p-1">{{movie.vote_average}}</div>
+        </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row py-5">
+    <div class="col-md-4">
+        <div class="my-5">
+            <div class="brdr w-25 my-2"></div>
+
+            <h2 class="my-2"> Tranding Tv Show <br> To wathing Right Now</h2>
+            <p>Tranding Tv Show To wathing Right Now</p>
+
+            <div class="brdr w-100 my-2" ></div>
+        </div>
+    </div>
+    <div *ngFor="let tv of tv" class="col-md-2">
+        <div class="item position-relative">
+            <img [src]="imgSrc+tv.poster_path" class="w-100" alt="">
+            <h2 class="h4">{{tv.name}}</h2>
+            <div class="vote position-absolute top-0 end-0 bg-info p-1">{{tv.vote_average}}</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row py-5">
+    <div class="col-md-4">
+        <div class="my-5">
+            <div class="brdr w-25 my-2"></div>
+
+            <h2 class="my-2"> Tranding Person <br> To wathing Right Now</h2>
+            <p>Tranding Person To wathing Right Now</p>
+
+            <div class="brdr w-100 my-2" ></div>
+        </div>
+    </div>
+    <div *ngFor="let person of person" class="col-md-2">
+        <div class="item position-relative">
+            <img [src]="person.profile_path" class="w-100" alt="">
+            <h2 class="h4">{{person.name}}</h2>
+        </div>
+    </div>
+</div>
+

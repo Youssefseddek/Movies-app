@@ -1,0 +1,38 @@
+
+
+<h2 class="py-2">Login</h2>
+
+<div class="w-75 mx-auto">
+    
+    <form [formGroup]="loginForm"   (ngSubmit)="submitLoginFormForm(loginForm)">
+
+        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+
+
+
+
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" class="form-control" id="email">
+        <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched"  class=" my-2">
+            <p *ngIf="loginForm.get('email')?.errors?.['required']" class=" alert alert-danger py-1">Email is required</p>
+            <p *ngIf="loginForm.get('email')?.errors?.['minlength']" class=" alert alert-danger py-1">Email is Invalid</p>
+
+        </div>
+
+
+        <label for="password">Password</label>
+        <input type="text" formControlName="password" class="form-control" id="password">
+        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched"  class=" my-2">
+            <p *ngIf="loginForm.get('password')?.errors?.['required']" class=" alert alert-danger py-1">password is required</p>
+            <p *ngIf="loginForm.get('password')?.errors?.['pattern']" class=" alert alert-danger py-1">password is minlength 8 and max 16</p>
+            
+
+        </div>
+
+
+        <button [disabled]="loginForm.invalid" class="btn btn-info " type="submit">Register</button>
+
+    </form>
+
+</div>
+
